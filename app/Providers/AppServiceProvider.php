@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
@@ -25,7 +26,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // Paksa skema HTTPS di production atau saat variabel FORCE_HTTPS aktif
+        if (config('app.env') !== 'local' || (bool) env('FORCE_HTTPS', false) === true) {
+            URL::forceScheme('https');
+        }
 
         config(['app.locale' => 'id']);
         Carbon::setLocale('id');
