@@ -10,10 +10,6 @@ RUN apt-get update && apt-get install -y \
     libxml2-dev \
     zip \
     unzip \
-    nodejs \
-    npm \
-    supervisor \
-    nginx \
     && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 
 # Install Composer
@@ -27,9 +23,6 @@ COPY . /var/www/html/
 
 # Install dependencies PHP
 RUN composer install --ignore-platform-reqs --no-dev --optimize-autoloader
-
-# Install dependencies Node.js
-RUN npm install --production
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html \
