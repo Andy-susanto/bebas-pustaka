@@ -120,7 +120,7 @@
 
                             </div>
                             <div class="mb-3">
-                                <label>Upload Skripsi Repository (Template UIN Jambi) (<span style="color:red">Max. 5
+                                <label>Upload Skripsi Repository (Template UIN Jambi) (<span style="color:red">Max. 2
                                         Mb)</label>
 
                                 {{ Form::file('fileskripsi', ['accept' => 'application/pdf', 'class' => 'form-control ' . ($errors->has('fileskripsi') ? 'is-invalid' : '')]) }}
